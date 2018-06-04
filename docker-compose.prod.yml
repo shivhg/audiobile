@@ -1,0 +1,21 @@
+version: '3'
+services:
+  node:
+    build:
+      context: ./
+      dockerfile: Dockerfile.node
+    volumes:
+      -  /usr/audiobile/Audio_Books:/audiobooks_dir
+    ports:
+    - '3011:3010'
+
+  nginx:
+    build:
+      context: ./
+      dockerfile: Dockerfile.nginx
+    links:
+      - node:node
+    ports:
+      - '80:80'
+    volumes:
+      - /usr/audiobile/audiobile_webapp/build:/usr/webapp

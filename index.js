@@ -1,6 +1,6 @@
 let http = require('http');
 const fs = require('mz/fs')
-const audioBooksDir = '/Users/hgshivakumar/Desktop/Audio Books'
+const audioBooksDir = '/audiobooks_dir'
 
 let app = http.createServer(async function(req,res){
   let resPayload = {};
@@ -28,7 +28,7 @@ let app = http.createServer(async function(req,res){
     playAudio(parseInt(reqSplitArray[reqSplitArray.length-3]), parseInt(reqSplitArray[reqSplitArray.length-1]), res, req)
   }
 }).on('error', (e) => console.log('gone case', e));
-app.listen(8080);
+app.listen(3010);
 
 
 async function getBooksList() {
